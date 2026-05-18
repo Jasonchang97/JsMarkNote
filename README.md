@@ -1,187 +1,199 @@
-<p align="center"><img src="static/logo-small.png" alt="MarkText" width="100" height="100"></p>
+<p align="center"><img src="static/icon.png" alt="JsMarkNote" width="113" height="100"></p>
 
-<h1 align="center">MarkText</h1>
+<h1 align="center">JsMarkNote</h1>
 
 <div align="center">
-  <a href="https://twitter.com/intent/tweet?via=marktextme&url=https://github.com/marktext/marktext/&text=What%20do%20you%20want%20to%20say%20to%20app?&hashtags=happyMarkText">
-    <img src="https://img.shields.io/twitter/url/https/github.com/marktext/marktext.svg?style=for-the-badge" alt="twitter">
-  </a>
-</div>
-<div align="center">
-  <strong>:high_brightness: Next generation markdown editor :crescent_moon:</strong><br>
-  A simple and elegant open-source markdown editor that focused on speed and usability.<br>
-  <sub>Available for Linux, macOS and Windows.</sub>
+  <strong>新一代 Markdown 编辑器</strong><br>
+  一款简洁优雅的开源 Markdown 编辑器，专注于速度与易用性。<br>
+  <sub>支持 Linux、macOS 和 Windows。</sub>
 </div>
 
 <br>
 
 <div align="center">
-  <!-- License -->
   <a href="LICENSE">
     <img src="https://img.shields.io/github/license/marktext/marktext.svg" alt="LICENSE">
-  </a>
-  <!-- Downloads total -->
-  <a href="https://github.com/marktext/marktext/releases">
-    <img src="https://img.shields.io/github/downloads/marktext/marktext/total.svg" alt="total download">
-  </a>
-  <!-- Downloads latest release -->
-  <a href="https://github.com/marktext/marktext/releases/latest">
-    <img src="https://img.shields.io/github/downloads/marktext/marktext/v0.17.1/total.svg" alt="latest download">
-  </a>
-  <!-- sponsors -->
-  <a href="https://opencollective.com/marktext">
-    <img src="https://opencollective.com/marktext/tiers/silver-sponsors/badge.svg?label=SilverSponsors&color=brightgreen" alt="sponsors">
   </a>
 </div>
 
 <div align="center">
   <h3>
-    <a href="https://github.com/marktext/marktext">
-      Website
-    </a>
+    <a href="#功能特性">功能特性</a>
     <span> | </span>
-    <a href="https://github.com/marktext/marktext#features">
-      Features
-    </a>
+    <a href="#项目架构">项目架构</a>
     <span> | </span>
-    <a href="https://github.com/marktext/marktext#download-and-installation">
-      Downloads
-    </a>
-    <span> | </span>
-    <a href="https://github.com/marktext/marktext#development">
-      Development
-    </a>
-    <span> | </span>
-    <a href="https://github.com/marktext/marktext#contribution">
-      Contribution
-    </a>
+    <a href="#开发指南">开发指南</a>
   </h3>
-</div>
-
-<div align="center">
-  <sub>Translations:</sub>
-  <a href="docs/i18n/README-zh_cn.md#readme">
-    <span>:cn:</span>
-  </a>
-  <a href="docs/i18n/README-zh_tw.md#readme">
-    <span>:taiwan:</span>
-  </a>
-  <a href="docs/i18n/README-jp.md#readme">
-    <span>:jp:</span>
-  </a>
-  <a href="docs/i18n/README-fr.md#readme">
-    <span>:fr:</span>
-  </a>
-  <a href="docs/i18n/README-tr.md#readme">
-    <span>:tr:</span>
-  </a>
-  <a href="docs/i18n/README-es.md#readme">
-    <span>:es:</span>
-  </a>
-  <a href="docs/i18n/README-pt.md#readme">
-    <span>:portugal:</span>
-  </a>
-  <a href="docs/i18n/README-kr.md#readme">
-    <span>:kr:</span>
-  </a>
-</div>
-
-<div align="center">
-  <sub>This Markdown editor that could. Built with ❤︎ by
-    <a href="https://github.com/Jocs">Jocs</a> and
-    <a href="https://github.com/marktext/marktext/graphs/contributors">
-      contributors
-    </a>
-    .
-  </sub>
 </div>
 
 <br />
 
-<h2 align="center">Sponsors</h2>
+## 截图
 
-MarkText is an open-source Markdown editor powered by the support of its community. If MarkText improves your workflow, please consider [sponsoring the project](https://github.com/sponsors/marktext). Thank you to all the sponsors ❤️
+![](docs/assets/jsmarknote.png?raw=true)
 
-**Special Sponsor**
+## 功能特性
 
-<a href="https://serpapi.com/?utm_source=marktext"><img src="./docs/assets/sponsors/serpapi.png" width="150">Scrape Google and other search engines from our fast, easy, and complete API.</a>
+- 实时预览（所见即所得），界面简洁，提供无干扰的写作体验。
+- 支持 [CommonMark 规范](https://spec.commonmark.org/0.29/)、[GitHub Flavored Markdown 规范](https://github.github.com/gfm/)，并选择性支持 [Pandoc Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)。
+- 支持 Markdown 扩展语法，包括数学公式（KaTeX）、前置元数据（Front Matter）和表情符号。
+- 支持段落和内联样式快捷操作，提升写作效率。
+- 导出 **HTML** 和 **PDF** 文件。
+- 多种主题：**Cadmium Light**、**Material Dark** 等。
+- 多种编辑模式：**源码模式**、**打字机模式**、**专注模式**。
+- 直接从剪贴板粘贴图片。
+- 多语言支持（英语、简体中文、繁体中文、日语、韩语、西班牙语、法语、德语、葡萄牙语）。
 
-## Screenshot
+## 项目架构
 
-![](docs/assets/marktext.png?raw=true)
+JsMarkNote 基于 Electron 构建，采用三进程架构：
 
-## Features
-
-- Realtime preview (WYSIWYG) and a clean and simple interface to get a distraction-free writing experience.
-- Support [CommonMark Spec](https://spec.commonmark.org/0.29/), [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) and selective support [Pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown).
-- Markdown extensions such as math expressions (KaTeX), front matter and emojis.
-- Support paragraphs and inline style shortcuts to improve your writing efficiency.
-- Output **HTML** and **PDF** files.
-- Various [themes](docs/end-user/THEMES.md): **Cadmium Light**, **Material Dark** etc.
-- Various editing modes: **Source Code mode**, **Typewriter mode**, **Focus mode**.
-- Paste images directly from clipboard.
-
-## Download and Installation
-
-![platform](https://img.shields.io/static/v1.svg?label=Platform&message=Linux-64%20|%20macOS-64%20|%20Win-32%20|%20Win-64&style=for-the-badge)
-
-| ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)                                                                                         | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)                                                                                         | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)                                                                                                       |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-x64.dmg.svg)](https://github.com/marktext/marktext/releases/download/v0.17.1/marktext-x64.dmg) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-setup.exe.svg)](https://github.com/marktext/marktext/releases/download/v0.17.1/marktext-setup.exe) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-x86_64.AppImage.svg)](https://github.com/marktext/marktext/releases/download/v0.17.1/marktext-x86_64.AppImage) |
-
-Want to see new features of the latest version? Please refer to [CHANGELOG](docs/CHANGELOG.md).
-
-#### macOS
-
-You can either download the latest `marktext-%version%.dmg` from the [release page](https://github.com/marktext/marktext/releases/latest) or install MarkText using [**homebrew cask**](https://github.com/caskroom/homebrew-cask). To use Homebrew-Cask you just need to have [Homebrew](https://brew.sh/) installed.
-
-```bash
-brew install --cask mark-text
+```
+┌─────────────────────────────────────────────────────┐
+│                    主进程 (Main)                      │
+│  (Node.js / Electron)                                │
+│  - 应用生命周期管理                                    │
+│  - 原生菜单 & 右键菜单（国际化）                       │
+│  - 窗口管理                                           │
+│  - 文件系统操作                                        │
+│  - 用户偏好设置 & 快捷键                               │
+│  - 自动更新 & IPC 通信协调                              │
+├─────────────────────────────────────────────────────┤
+│                 预加载脚本 (Preload)                   │
+│  (主进程与渲染进程的安全桥梁)                           │
+│  - 通过 contextBridge 安全暴露 API                    │
+│  - IPC 通道注册                                        │
+├─────────────────────────────────────────────────────┤
+│                  渲染进程 (Renderer)                   │
+│  (Vue 3 + Pinia / Chromium)                          │
+│  - UI 组件（侧边栏、标签栏、标题栏等）                  │
+│  - 状态管理（Pinia Store）                             │
+│  - vue-i18n 界面国际化                                 │
+│  - 命令面板 & 快捷键                                   │
+└─────────────────────────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────────────────┐
+│                  Muya 编辑器引擎                      │
+│  (自研 Markdown 编辑核心)                             │
+│  - 实时 Markdown 解析与渲染                           │
+│  - 基于 ContentEditable 的编辑                       │
+│  - 行内 & 块级格式化                                  │
+│  - 代码围栏、数学公式、图表支持                        │
+│  - 图片预览 & 拖拽上传                                │
+│  - 表格编辑                                           │
+└─────────────────────────────────────────────────────┘
 ```
 
-#### Windows
+### 核心技术栈
 
-Simply download and install MarkText via setup wizard (`marktext-setup-%version%.exe`) and choose whether to install per-user or machine wide. Alternatively, install MarkText using a package manager such as [Chocolatey](https://chocolatey.org/) or [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/).
+| 组件 | 技术 |
+|------|------|
+| 桌面框架 | Electron 42 |
+| 构建工具 | electron-vite（基于 Vite） |
+| 打包工具 | electron-builder（NSIS / DMG / AppImage） |
+| UI 框架 | Vue 3 + Pinia |
+| 编辑器引擎 | Muya（自研 Markdown 引擎） |
+| 国际化 | vue-i18n（渲染进程）+ 自定义 i18n 模块（主进程） |
+| Markdown 解析 | markdown-it + 自定义扩展 |
+| 数学公式渲染 | KaTeX |
+| 图表支持 | Mermaid + Vegalite |
+| 语法高亮 | PrismJS |
+| 编码检测 | compact_enc_det（原生模块） |
+| 密钥管理 | Keytar（原生模块，系统钥匙串集成） |
 
-To use Chocolatey, you need to have [Chocolatey](https://chocolatey.org/install) installed:
+### 目录结构
 
-```bash
-choco install marktext
+```
+JsMarkNote/
+├── src/
+│   ├── main/                    # 主进程
+│   │   ├── app/                 # 应用启动 & 生命周期
+│   │   ├── menu/                # 原生菜单 & 右键菜单
+│   │   │   ├── templates/       # 菜单定义（文件、编辑、段落等）
+│   │   │   └── actions/         # 菜单动作处理器
+│   │   ├── windows/             # 窗口创建 & 管理
+│   │   ├── preferences/         # 用户设置持久化
+│   │   ├── keybindings/         # 快捷键管理
+│   │   ├── i18n.js              # 主进程国际化
+│   │   └── commands/            # 命令注册
+│   ├── renderer/                # 渲染进程（Vue 3）
+│   │   └── src/
+│   │       ├── components/      # Vue 组件
+│   │       ├── stores/          # Pinia 状态管理
+│   │       ├── i18n/            # vue-i18n 配置
+│   │       ├── commands/        # 命令面板
+│   │       └── contextMenu/     # 渲染进程右键菜单
+│   ├── muya/                    # Markdown 编辑器引擎
+│   │   ├── lib/
+│   │   │   ├── contentState/    # 文档状态管理
+│   │   │   ├── parser/          # Markdown 解析器
+│   │   │   ├── renderers/       # 块级 & 行内渲染器
+│   │   │   ├── eventHandler/    # 输入、点击、键盘事件
+│   │   │   └── selection/       # 光标 & 选区管理
+│   │   └── assets/              # 编辑器样式 & 图标
+│   ├── common/                  # 共享模块（i18n、文件系统等）
+│   └── preload/                 # 预加载脚本
+├── static/                      # 静态资源
+│   ├── locales/                 # 国际化 JSON 文件（9 种语言）
+│   └── themes/                  # 编辑器主题
+├── build/                       # 构建资源
+│   ├── icons/                   # 应用图标（ico、png、icns）
+│   └── windows/                 # NSIS 安装器自定义
+├── electron-builder.yml         # 打包配置
+├── electron.vite.config.js      # Vite 构建配置
+└── scripts/                     # 构建脚本（locale 压缩等）
 ```
 
-To use Winget, you need to have [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/#install-winget) installed:
+## 开发指南
+
+### 环境要求
+
+- Node.js >= 18
+- npm >= 9
+- Visual Studio 2019（Windows 上编译原生模块所需）
+
+### 快速开始
 
 ```bash
-winget install marktext
+# 安装依赖
+npm install
+
+# 重新编译原生模块（keytar、native-keymap、ced）
+npm run rebuild-native
+
+# 启动开发服务器
+npm run dev
 ```
 
-#### Linux
+### 构建与打包
 
-Please follow the [Linux installation instructions](docs/end-user/LINUX.md).
+```bash
+# 生产环境构建
+npm run build
 
-#### Other
+# 打包 Windows 安装包
+npm run build:win
 
-All binaries for Linux, macOS and Windows can be downloaded from the [release page](https://github.com/marktext/marktext/releases/latest). If a version is unavailable for your system, then please open an [issue](https://github.com/marktext/marktext/issues).
+# 打包 macOS 安装包
+npm run build:mac
 
-## Development
+# 打包 Linux 安装包
+npm run build:linux
+```
 
-If you wish to build MarkText yourself, please check out our [build instructions](docs/dev/BUILD.md).
+打包产物输出在 `dist/` 目录。
 
-- [User documentation](docs/README.md)
-- [Developer documentation](docs/dev/README.md)
+### 国际化开发
 
-If you have any questions regarding MarkText, you are welcome to write an issue. When doing so please use the default format found when opening an issue. Of course, if you submit a PR directly, it will be greatly appreciated.
+语言文件位于 `static/locales/`。编辑后执行：
 
-## Contribution
+```bash
+npm run minify-locales
+```
 
-MarkText is in development, please make sure to read the [Contributing Guide](.github/CONTRIBUTING.md) before making a pull request. Want to add some features to MarkText? Refer to our [roadmap](https://github.com/marktext/marktext/projects) and open issues.
+生成主进程 i18n 模块使用的 `.min.json` 压缩文件。
 
-## Contributors
+## 许可证
 
-Thank you to all the people who have already contributed to MarkText[[contributors](https://github.com/marktext/marktext/graphs/contributors)].
-
-<a href="https://github.com/marktext/marktext/graphs/contributors"><img src="https://opencollective.com/marktext/contributors.svg?width=890" /></a>
-
-## License
-
-[**MIT**](LICENSE).
+[**MIT**](LICENSE)。
