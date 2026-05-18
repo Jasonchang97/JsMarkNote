@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=JsMarkNote
+Comment=Next generation markdown editor
+Exec=jsmarknote %F
+Terminal=false
+Type=Application
+Icon=jsmarknote
+Categories=Office;TextEditor;Utility;
+MimeType=text/markdown;
+Keywords=jsmarknote;
+StartupWMClass=jsmarknote
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=New Window
+Exec=jsmarknote --new-window %F
+Icon=jsmarknote
