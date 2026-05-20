@@ -84,12 +84,9 @@ jobs:
       # Use Electron's bundled Clang on Windows to support GCC builtins like __builtin_frame_address
       - name: Rebuild native modules for Electron (Windows)
         if: matrix.platform == 'windows'
-        run: |
-          npm config set clang 1
-          npx @electron/rebuild -f
+        run: npx @electron/rebuild -f --use-electron-clang
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USE_ELECTRON_CLANG: 1
 
       - name: Rebuild native modules for Electron (MacOS)
         if: matrix.platform == 'macos'
