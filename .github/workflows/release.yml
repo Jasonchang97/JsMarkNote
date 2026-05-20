@@ -1,4 +1,4 @@
-name: Build/release Marktext
+name: Build/release JsMarkNote
 
 on:
   push:
@@ -100,14 +100,14 @@ jobs:
           name: 'Pre-release ${{ github.ref_name }}'
           body: |
             ## ❗This is a Pre-release
-            - This is a pre-release build of MarkText, it will most likely contain bugs and unfinished features.
+            - This is a pre-release build of JsMarkNote, it will most likely contain bugs and unfinished features.
 
             ## ⚠️ Note for MacOS Users
-            - MacOS releases will show a "`Apple couldn't verify MarkText is free of viruses...`" due to a **lack of notorisation**. 
-            - Please run the following commands [based off this fix here](https://github.com/marktext/marktext/issues/3004#issuecomment-1038207300) after you have dragged MarkText into the "Applications" folder
+            - MacOS releases will show a "`Apple couldn't verify JsMarkNote is free of viruses...`" due to a **lack of notorisation**.
+            - Please run the following commands after you have dragged JsMarkNote into the "Applications" folder
             ```
-            sudo find /Applications/marktext.app -exec xattr -c {} \; # <-- Note this change on newer MacOS versions
-            sudo codesign --force --deep --sign - /Applications/marktext.app
+            sudo find /Applications/jsmarknote.app -exec xattr -c {} \; # <-- Note this change on newer MacOS versions
+            sudo codesign --force --deep --sign - /Applications/jsmarknote.app
             ```
 
             ## Changes

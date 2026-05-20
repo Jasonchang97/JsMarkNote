@@ -12,7 +12,7 @@
 
 <div align="center">
   <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/marktext/marktext.svg" alt="LICENSE">
+    <img src="https://img.shields.io/github/license/jsmarknote/jsmarknote.svg" alt="LICENSE">
   </a>
 </div>
 
