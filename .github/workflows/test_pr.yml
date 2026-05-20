@@ -68,9 +68,8 @@ jobs:
       - name: Patch native-keymap binding.gyp (Windows)
         if: matrix.platform == 'windows'
         run: |
-          $file = "node_modules/native-keymap/binding.gyp"
-          (Get-Content $file) -replace "'SpectreMitigation':\s*'Spectre'", "'SpectreMitigation': 'false'" | Set-Content $file
-        shell: pwsh
+          node -e "const fs=require('fs');const f='node_modules/native-keymap/binding.gyp';let c=fs.readFileSync(f,'utf8');if(c.includes('SpectreMitigation')){c=c.replace(/.*SpectreMitigation.*\n/g,'');fs.writeFileSync(f,c,'utf8');console.log('Spectre patched')}else{console.log('No Spectre found')}"
+        shell: bash
 
       # Electron seems to require C++20 support for native modules now after Electron 33
       - name: Set C++20 for MacOS
