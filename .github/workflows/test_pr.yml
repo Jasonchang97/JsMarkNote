@@ -64,16 +64,11 @@ jobs:
           node-gyp install
         shell: pwsh
 
-      # Patch native-keymap to disable Spectre mitigation (not available on CI)
-      - name: Patch native-keymap binding.gyp (Windows)
+      # Patch native-keymap (Spectre mitigation) and Electron headers (__builtin_frame_address) for Windows
+      - name: Patch for Windows CI (Windows)
         if: matrix.platform == 'windows'
-        run: |
-          Write-Host "=== Before patch ==="
-          Select-String -Path "node_modules/native-keymap/binding.gyp" -Pattern "SpectreMitigation"
-          node scripts/patch-native-keymap.js
-          Write-Host "=== After patch ==="
-          Select-String -Path "node_modules/native-keymap/binding.gyp" -Pattern "SpectreMitigation"
-        shell: pwsh
+        run: node scripts/patch-native-keymap.js
+        shell: bash
 
       # Electron seems to require C++20 support for native modules now after Electron 33
       - name: Set C++20 for MacOS
@@ -81,10 +76,9 @@ jobs:
         run: |
           echo "CXXFLAGS=-std=gnu++20 -stdlib=libc++" >> $GITHUB_ENV
 
-      # Use Electron's bundled Clang on Windows to support GCC builtins like __builtin_frame_address
       - name: Rebuild native modules for Electron (Windows)
         if: matrix.platform == 'windows'
-        run: npx @electron/rebuild -f --use-electron-clang
+        run: npx @electron/rebuild -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
