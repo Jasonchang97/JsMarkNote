@@ -73,9 +73,21 @@ export const getCurrentLanguage = () => i18n.global.locale.value
 export { i18n }
 export default i18n
 
+// Pre-warm translation cache in background so language switch is instant
+if (window.i18nUtils && window.i18nUtils.loadTranslations) {
+  const LANGUAGES_TO_PRELOAD = ['zh-CN', 'zh-TW', 'es', 'fr', 'de', 'ja', 'ko', 'pt']
+  setTimeout(() => {
+    for (const lang of LANGUAGES_TO_PRELOAD) {
+      try { window.i18nUtils.loadTranslations(lang) } catch {}
+    }
+  }, 2000)
+}
+
 // Listen for language changes
 if (window.electron && window.electron.ipcRenderer) {
   window.electron.ipcRenderer.on('language-changed', (event, newLocale) => {
+    // Skip if already on this locale (avoids redundant Vue reactivity trigger)
+    if (i18n.global.locale.value === newLocale) return
     setLanguage(newLocale)
     bus.emit('language-changed', newLocale)
   })

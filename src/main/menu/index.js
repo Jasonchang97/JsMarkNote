@@ -454,9 +454,9 @@ class AppMenu {
         this.updateAutoSaveMenu(prefs.autoSave)
       }
       if (prefs.language) {
-        // Update main process language and rebuild menu
+        // Update main process language and rebuild menu (deferred to unblock language switch)
         setLanguage(prefs.language)
-        this.updateAppMenu()
+        setTimeout(() => this.updateAppMenu(), 0)
       }
     })
   }
