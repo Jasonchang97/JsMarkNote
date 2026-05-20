@@ -52,6 +52,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # Workaround: Fix native build failure due to outdated node-gyp version on Windows
+      - name: Fix node-gyp (Windows)
+        if: matrix.platform == 'windows'
+        run: |
+          npm install --global node-gyp@latest
+          npm config set node_gyp "$env:APPDATA\npm\node_modules\node-gyp\bin\node-gyp.js"
+          node-gyp install
+        shell: pwsh
+
       # Electron seems to require C++20 support for native modules now after Electron 33
       - name: Set C++20 for MacOS
         if: matrix.platform == 'macos'
@@ -63,6 +72,7 @@ jobs:
         run: npx @electron/rebuild -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GYP_MSVS_VERSION: 2022
 
       # Enforce using gcc/g++ on Linux for electron-rebuild instead of clang (.npmrc covers some settings too)
       - name: Rebuild native modules for Electron (Ubuntu)
