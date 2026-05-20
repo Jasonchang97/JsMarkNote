@@ -19,13 +19,13 @@ if (!content.includes('SpectreMitigation')) {
   process.exit(0);
 }
 
-content = content.replace(/'SpectreMitigation'\s*:\s*'Spectre'/g, "'SpectreMitigation': 'Disabled'");
+content = content.replace(/'SpectreMitigation'\s*:\s*'Spectre'/g, "'SpectreMitigation': 'false'");
 fs.writeFileSync(bindingPath, content, 'utf8');
 
 // Verify the patch
 const verify = fs.readFileSync(bindingPath, 'utf8');
-if (verify.includes("'SpectreMitigation': 'Disabled'")) {
-  console.log('Patched SpectreMitigation -> Disabled successfully');
+if (verify.includes("'SpectreMitigation': 'false'")) {
+  console.log("Patched SpectreMitigation -> 'false' successfully");
 } else if (verify.includes('SpectreMitigation')) {
   console.error('ERROR: Patch verification failed, SpectreMitigation still present');
   process.exit(1);
