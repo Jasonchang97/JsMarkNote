@@ -61,11 +61,18 @@ jobs:
           node-gyp install
         shell: pwsh
 
-      # Workaround: Disable Spectre mitigation in native-keymap (VS Spectre component not available on CI)
-      - name: Patch native-keymap binding.gyp (Windows)
+      # Install Spectre-mitigated MSVC libraries for native-keymap on Windows
+      - name: Install Spectre MSVC component (Windows)
         if: matrix.platform == 'windows'
-        run: node scripts/patch-native-keymap.js
-        shell: bash
+        run: |
+          & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify --installPath "C:\Program Files\Microsoft Visual Studio\2022\Enterprise" --add Microsoft.VisualStudio.Component.VC.Tools.Spectre --quiet --norestart --nocache 2>&1
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "vs_installer failed (exit $LASTEXITCODE), falling back to patch"
+            node scripts/patch-native-keymap.js
+          } else {
+            Write-Host "Spectre component installed successfully"
+          }
+        shell: pwsh
 
       # Electron seems to require C++20 support for native modules now after Electron 33
       - name: Set C++20 for MacOS
