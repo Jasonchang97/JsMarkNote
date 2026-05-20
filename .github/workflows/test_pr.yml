@@ -67,8 +67,7 @@ jobs:
       # Workaround: Disable Spectre mitigation in native-keymap (VS Spectre component not available on CI)
       - name: Patch native-keymap binding.gyp (Windows)
         if: matrix.platform == 'windows'
-        run: |
-          node -e "const fs=require('fs'),p='node_modules/native-keymap/binding.gyp';let c=fs.readFileSync(p,'utf8');c=c.replace(\"'SpectreMitigation': 'Spectre'\",\"'SpectreMitigation': 'Disabled'\");fs.writeFileSync(p,c,'utf8');console.log('Patched SpectreMitigation -> Disabled')"
+        run: node scripts/patch-native-keymap.js
         shell: bash
 
       # Electron seems to require C++20 support for native modules now after Electron 33
