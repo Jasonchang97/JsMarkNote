@@ -78,7 +78,6 @@ jobs:
         run: npx @electron/rebuild -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CL: '/D__builtin_frame_address(x)=((void)0)'
 
       - name: Rebuild native modules for Electron (MacOS)
         if: matrix.platform == 'macos'
