@@ -34,6 +34,7 @@ class AppMenu {
     this.isOsxOrWindows = isOsx || isWindows
     this.activeWindowId = -1
     this.windowMenus = new Map()
+    this._lastSelectionStates = new Map() // cache paragraph state per window for menu rebuild
 
     // Initialize main process language from preferences
     this._initializeLanguage()
@@ -276,6 +277,12 @@ class AppMenu {
       if (activeWindowId === key) {
         this._setApplicationMenu(newMenu)
       }
+
+      // Restore paragraph/format menu state after rebuild
+      const lastState = this._lastSelectionStates.get(key)
+      if (lastState) {
+        updateSelectionMenus(newMenu, lastState)
+      }
     })
   }
 
@@ -436,6 +443,7 @@ class AppMenu {
         log.error(`UpdateApplicationMenu: Cannot find window menu for window id ${windowId}.`)
         return
       }
+      this._lastSelectionStates.set(windowId, changes)
       updateSelectionMenus(this.getWindowMenuById(windowId), changes)
     })
 

@@ -2,7 +2,7 @@ import { Menu } from 'electron'
 import { minimizeWindow, toggleAlwaysOnTop, toggleFullScreen } from '../actions/window'
 import { zoomIn, zoomOut } from '../../windows/utils'
 import { isOsx } from '../../config'
-import { t } from '../../i18n'
+import { t, setLanguage, getCurrentLanguage } from '../../i18n'
 
 export default function(keybindings) {
   const menu = {
@@ -36,6 +36,66 @@ export default function(keybindings) {
       click(menuItem, browserWindow) {
         zoomOut(browserWindow)
       }
+    }, {
+      type: 'separator'
+    }, {
+      label: t('menu.edit.language'),
+      submenu: [
+        {
+          label: t('menu.edit.languageEn'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'en',
+          click() { setLanguage('en') }
+        },
+        {
+          label: t('menu.edit.languageZhCN'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'zh-CN',
+          click() { setLanguage('zh-CN') }
+        },
+        {
+          label: t('menu.edit.languageZhTW'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'zh-TW',
+          click() { setLanguage('zh-TW') }
+        },
+        {
+          label: t('menu.edit.languageEs'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'es',
+          click() { setLanguage('es') }
+        },
+        {
+          label: t('menu.edit.languageFr'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'fr',
+          click() { setLanguage('fr') }
+        },
+        {
+          label: t('menu.edit.languageDe'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'de',
+          click() { setLanguage('de') }
+        },
+        {
+          label: t('menu.edit.languageJa'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'ja',
+          click() { setLanguage('ja') }
+        },
+        {
+          label: t('menu.edit.languageKo'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'ko',
+          click() { setLanguage('ko') }
+        },
+        {
+          label: t('menu.edit.languagePt'),
+          type: 'radio',
+          checked: getCurrentLanguage() === 'pt',
+          click() { setLanguage('pt') }
+        }
+      ]
     }, {
       type: 'separator'
     }, {
