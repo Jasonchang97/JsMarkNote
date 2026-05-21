@@ -20,12 +20,9 @@
   WriteRegStr HKCU "Software\Classes\.mdtext"   "" "JsMarkNote.Document"
   WriteRegStr HKCU "Software\Classes\.mdx"      "" "JsMarkNote.Document"
 
-  WriteRegStr HKCU "Software\Classes\JsMarkNote.Document" \
-    "" "JsMarkNote Markdown Document"
-  WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\DefaultIcon" \
-    "" "$INSTDIR\resources\icons\icon.ico,0"
-  WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\shell\open\command" \
-    "" ‘"$INSTDIR\jsmarknote.exe" "%1"’
+  WriteRegStr HKCU "Software\Classes\JsMarkNote.Document" "" "JsMarkNote Markdown Document"
+  WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\DefaultIcon" "" "$INSTDIR\resources\icons\icon.ico,0"
+  WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\shell\open\command" "" "$\"$INSTDIR\jsmarknote.exe$\" $\"%1$\""
 
 SkipAssoc:
 !macroend
