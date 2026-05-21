@@ -41,6 +41,7 @@ extraResources:
     to: icons # ends up at resources/icons/
     filter:
       - 'icon.ico'
+      - 'md.ico'
   - from: static
     to: static
     filter:
