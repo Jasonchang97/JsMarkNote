@@ -543,6 +543,11 @@
           "title": "Dateien sortieren nach",
           "creationTime": "Erstellungszeit",
           "modificationTime": "Änderungszeit"
+        },
+        "sidebarPosition": {
+          "title": "Seitenleistenposition",
+          "left": "Links",
+          "right": "Rechts"
         }
       },
       "misc": {

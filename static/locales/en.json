@@ -542,6 +542,11 @@
           "title": "File Sort By",
           "creationTime": "Creation Time",
           "modificationTime": "Modification Time"
+        },
+        "sidebarPosition": {
+          "title": "Sidebar Position",
+          "left": "Left",
+          "right": "Right"
         }
       },
       "misc": {

@@ -93,6 +93,12 @@
           :on-change="(value) => onSelectChange('fileSortBy', value)"
           :disable="true"
         />
+        <cur-select
+          :description="t('preferences.general.sidebar.sidebarPosition.title')"
+          :value="sidebarPosition"
+          :options="getSidebarPositionOptions()"
+          :on-change="(value) => onSelectChange('sidebarPosition', value)"
+        />
       </template>
     </compound>
 
@@ -201,7 +207,8 @@ import {
   getTitleBarStyleOptions,
   zoomOptions,
   getFileSortByOptions,
-  getLanguageOptions
+  getLanguageOptions,
+  getSidebarPositionOptions
 } from './config'
 
 const { t } = useI18n()
@@ -219,7 +226,8 @@ const {
   hideScrollbar,
   wordWrapInToc,
   fileSortBy,
-  language
+  language,
+  sidebarPosition
 } = storeToRefs(preferenceStore)
 
 const startUpAction = computed({

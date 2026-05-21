@@ -49,6 +49,14 @@ export const zoomOptions = [{
   value: 2.0
 }]
 
+export const getSidebarPositionOptions = () => [{
+  label: t('preferences.general.sidebar.sidebarPosition.left'),
+  value: 'left'
+}, {
+  label: t('preferences.general.sidebar.sidebarPosition.right'),
+  value: 'right'
+}]
+
 export const getFileSortByOptions = () => [{
   label: t('preferences.general.sidebar.fileSortBy.creationTime'),
   value: 'created'

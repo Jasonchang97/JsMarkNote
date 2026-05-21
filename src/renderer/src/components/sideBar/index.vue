@@ -3,8 +3,14 @@
     v-show="showSideBar"
     ref="sideBar"
     class="side-bar"
+    :class="{ 'side-bar--right': sidebarPosition === 'right' }"
     :style="[!rightColumn ? { 'min-width': '45px' } : {}, { width: `${finalSideBarWidth}px` }]"
   >
+    <div
+      v-show="rightColumn"
+      ref="dragBar"
+      class="drag-bar"
+    />
     <div class="left-column">
       <ul>
         <li
@@ -39,11 +45,6 @@
       <side-bar-search v-else-if="rightColumn === 'search'" />
       <toc v-else-if="rightColumn === 'toc'" />
     </div>
-    <div
-      v-show="rightColumn"
-      ref="dragBar"
-      class="drag-bar"
-    />
   </div>
 </template>
 
@@ -58,6 +59,13 @@ import Tree from './tree.vue'
 import SideBarSearch from './search.vue'
 import Toc from './toc.vue'
 import { storeToRefs } from 'pinia'
+
+const props = defineProps({
+  sidebarPosition: {
+    type: String,
+    default: 'left'
+  }
+})
 
 const layoutStore = useLayoutStore()
 const projectStore = useProjectStore()
@@ -96,7 +104,9 @@ onMounted(() => {
     }
 
     const mouseMoveHandler = (event) => {
-      const offset = event.clientX - startX
+      const offset = props.sidebarPosition === 'right'
+        ? startX - event.clientX
+        : event.clientX - startX
       currentSideBarWidth = startWidth + offset
       sideBarViewWidth.value = currentSideBarWidth
     }
@@ -146,6 +156,12 @@ const handleLeftBottomClick = (name) => {
   user-select: none;
   background: var(--sideBarBgColor);
   border-right: 1px solid var(--itemBgColor);
+}
+
+.side-bar--right {
+  border-right: none;
+  border-left: 1px solid var(--itemBgColor);
+  order: 1;
 }
 
 .side-bar .left-column svg {
@@ -210,14 +226,25 @@ const handleLeftBottomClick = (name) => {
 .drag-bar {
   position: absolute;
   top: 0;
-  right: 0;
   bottom: 0;
   height: 100%;
   width: 3px;
   cursor: col-resize;
 }
 
-.drag-bar:hover {
+.side-bar:not(.side-bar--right) .drag-bar {
+  right: 0;
+}
+
+.side-bar:not(.side-bar--right) .drag-bar:hover {
   border-right: 2px solid var(--iconColor);
+}
+
+.side-bar--right .drag-bar {
+  left: 0;
+}
+
+.side-bar--right .drag-bar:hover {
+  border-left: 2px solid var(--iconColor);
 }
 </style>

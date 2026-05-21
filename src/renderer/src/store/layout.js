@@ -21,13 +21,15 @@ const createBufferedLayoutState = (state) => {
 
 const width = localStorage.getItem('side-bar-width')
 const sideBarWidth = normalizeSideBarWidth(width)
+const sidebarPosition = localStorage.getItem('sidebar-position') || 'left'
 
 export const useLayoutStore = defineStore('layout', {
   state: () => ({
     rightColumn: 'files',
     showSideBar: false,
     showTabBar: false,
-    sideBarWidth
+    sideBarWidth,
+    sidebarPosition
   }),
   actions: {
     SET_LAYOUT(layout, { scheduleBufferUpdate = true } = {}) {
@@ -121,6 +123,12 @@ export const useLayoutStore = defineStore('layout', {
 
     CHANGE_SIDE_BAR_WIDTH(width) {
       this.SET_SIDE_BAR_WIDTH(width)
+    },
+
+    SET_SIDEBAR_POSITION(position) {
+      this.sidebarPosition = position
+      localStorage.setItem('sidebar-position', position)
+      debouncedSendBufferedState()
     }
   }
 })

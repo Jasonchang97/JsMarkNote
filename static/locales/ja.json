@@ -544,6 +544,11 @@
           "title": "ファイルの並び順",
           "creationTime": "作成時刻",
           "modificationTime": "変更時刻"
+        },
+        "sidebarPosition": {
+          "title": "サイドバーの位置",
+          "left": "左",
+          "right": "右"
         }
       },
       "misc": {

@@ -66,6 +66,7 @@
   "spellcheckerLanguage": "en-US",
 
   "sideBarVisibility": false,
+  "sidebarPosition": "left",
   "tabBarVisibility": false,
   "sourceCodeModeEnabled": false,
 

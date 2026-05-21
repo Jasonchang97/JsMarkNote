@@ -544,6 +544,11 @@
           "title": "Ordenar Arquivos Por",
           "creationTime": "Hora de Criação",
           "modificationTime": "Hora de Modificação"
+        },
+        "sidebarPosition": {
+          "title": "Posição da barra lateral",
+          "left": "Esquerda",
+          "right": "Direita"
         }
       },
       "misc": {

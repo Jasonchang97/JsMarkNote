@@ -25,6 +25,12 @@ class QuickInsert extends BaseScrollFloat {
     this.listen()
   }
 
+  setTranslationFunction(t) {
+    const translateFn = t || null
+    this.originalQuickInsertObj = createQuickInsertObj(translateFn)
+    this.renderObj = this.originalQuickInsertObj
+  }
+
   get renderObj() {
     return this._renderObj
   }

@@ -544,6 +544,11 @@
           "title": "文件排序方式",
           "creationTime": "创建时间",
           "modificationTime": "修改时间"
+        },
+        "sidebarPosition": {
+          "title": "侧边栏位置",
+          "left": "左侧",
+          "right": "右侧"
         }
       },
       "misc": {

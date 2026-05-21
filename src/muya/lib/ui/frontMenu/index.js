@@ -45,6 +45,13 @@ class FrontMenu extends BaseFloat {
     this.listen()
   }
 
+  setTranslationFunction(t) {
+    this.t = t || ((key) => key)
+    this.menu = createMenu(this.t)
+    this.getLabel = createGetLabel(this.t)
+    this.getSubMenu = createGetSubMenu(this.t)
+  }
+
   listen() {
     const { eventCenter } = this.muya
     super.listen()
@@ -120,7 +127,8 @@ class FrontMenu extends BaseFloat {
   render() {
     const { oldVnode, frontMenuContainer, outmostBlock, startBlock, endBlock } = this
     const { type, functionType } = outmostBlock
-    const children = this.menu.map(({ icon, label, text, shortCut }) => {
+    const menu = createMenu(this.t)
+    const children = menu.map(({ icon, label, text, shortCut }) => {
       const subMenu = this.getSubMenu(outmostBlock, startBlock, endBlock)
       const iconWrapperSelector = 'div.icon-wrapper'
       const iconWrapper = h(

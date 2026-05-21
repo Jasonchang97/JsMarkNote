@@ -347,6 +347,12 @@
     "type": "boolean",
     "default": false
   },
+  "sidebarPosition": {
+    "description": "View--Sidebar position: left or right.--internal",
+    "type": "string",
+    "enum": ["left", "right"],
+    "default": "left"
+  },
   "tabBarVisibility": {
     "description": "View--Whether the tabs are shown.--internal",
     "type": "boolean",

@@ -73,6 +73,7 @@ export const usePreferencesStore = defineStore('preferences', {
 
     // Default values that are overwritten with the entries below.
     sideBarVisibility: false,
+    sidebarPosition: 'left',
     tabBarVisibility: false,
     sourceCodeModeEnabled: false,
 

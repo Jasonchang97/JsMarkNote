@@ -460,6 +460,16 @@ class Muya {
     if (options.t && this.i18nCSS) {
       this.i18nCSS.setTranslationFunction(options.t)
     }
+
+    // Update FrontMenu translation
+    if (options.t && this.frontMenu) {
+      this.frontMenu.setTranslationFunction(options.t)
+    }
+
+    // Update QuickInsert translation
+    if (options.t && this.quickInsert) {
+      this.quickInsert.setTranslationFunction(options.t)
+    }
   }
 
   hideAllFloatTools() {

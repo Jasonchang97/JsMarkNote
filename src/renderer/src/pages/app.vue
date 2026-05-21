@@ -1,6 +1,9 @@
 <template>
   <div class="editor-container">
-    <side-bar v-if="init" />
+    <side-bar
+      v-if="init"
+      :sidebar-position="sidebarPosition"
+    />
 
     <div class="editor-middle">
       <title-bar
@@ -80,8 +83,8 @@ const timer = ref(null)
 
 // States from Pini
 const { windowActive, platform, init } = storeToRefs(mainStore)
-const { showTabBar } = storeToRefs(layoutStore)
-const { sourceCode, theme, customCss, textDirection, zoom } = storeToRefs(preferencesStore)
+const { showTabBar, sidebarPosition } = storeToRefs(layoutStore)
+const { sourceCode, theme, customCss, textDirection, zoom, sidebarPosition: prefSidebarPosition } = storeToRefs(preferencesStore)
 const { projectTree } = storeToRefs(projectStore)
 const { currentFile } = storeToRefs(editorStore)
 
@@ -114,6 +117,10 @@ watch(customCss, (value, oldValue) => {
 
 watch(zoom, (zoomValue) => {
   bus.emit('mt::window-zoom', zoomValue)
+})
+
+watch(prefSidebarPosition, (value) => {
+  layoutStore.SET_SIDEBAR_POSITION(value)
 })
 
 const setupDragDropHandler = () => {
