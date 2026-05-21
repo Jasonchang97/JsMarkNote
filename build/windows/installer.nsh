@@ -3,6 +3,10 @@
 ;======================================================================
 ; customInstall macro is invoked by electron-builder after files are in $INSTDIR
 !macro customInstall
+  ; Check if .md is already associated with JsMarkNote
+  ReadRegStr $0 HKCU "Software\Classes\.md" ""
+  StrCmp $0 "JsMarkNote.Document" SkipAssoc
+
   ; Ask the user if they want to register file associations
   MessageBox MB_YESNO|MB_ICONQUESTION \
   "Do you want to associate Markdown files (.md, .markdown, .mmd, .mdown, .mdtext, .mdx) with JsMarkNote?" /SD IDNO IDNO SkipAssoc
@@ -21,7 +25,7 @@
   WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\DefaultIcon" \
     "" "$INSTDIR\resources\icons\icon.ico,0"
   WriteRegExpandStr HKCU "Software\Classes\JsMarkNote.Document\shell\open\command" \
-    "" '"$INSTDIR\jsmarknote.exe" "%1"'
+    "" ‘"$INSTDIR\jsmarknote.exe" "%1"’
 
 SkipAssoc:
 !macroend
